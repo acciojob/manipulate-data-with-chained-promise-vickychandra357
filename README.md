@@ -4,7 +4,7 @@ Create a JavaScript function that returns a promise which resolves with an array
 
 ## Acceptance Criteria
 
-1. Take an array `[1, 2, 3, 4]` as input.
+1. Take an array `[1, 2, 3, 4]` as input. 
 2. Resolve a promise after `3 seconds` after manipulating the array as follows.
 3. First, filter out odd numbers and print the array in the div with the id of `output` after `1 second`
 4. Then, multiply all even numbers by 2 and print the array in the div of id of `output` after `2 seconds`

@@ -1,32 +1,26 @@
-function processNumbers(numbers) {
-    return new Promise((resolve, reject) => {
+function getNumbers() {
+    return new Promise((resolve) => {
       setTimeout(() => {
-        resolve(numbers);
+        resolve([1, 2, 3, 4]);
       }, 3000);
     });
   }
-  
-  processNumbers([1, 2, 3, 4])
-    .then(numbers => {
-      const filteredNumbers = numbers.filter(number => number % 2 !== 0);
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          resolve(filteredNumbers);
-        }, 1000);
-      });
-    })
-    .then(numbers => {
-      const updatedNumbers = numbers.map(number => number * 2);
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          resolve(updatedNumbers);
-        }, 2000);
-      });
-    })
-    .then(numbers => {
-      const outputElement = document.getElementById('output');
-      outputElement.innerText = numbers.join(', ');
-    })
-    .catch(error => {
-      console.error(error);
-    });
+  getNumbers()
+  .then(numbers => {
+    // Filter out odd numbers
+    const filteredNumbers = numbers.filter(num => num % 2 !== 0);
+    return filteredNumbers;
+  })
+  .then(filteredNumbers => {
+    // Multiply even numbers by 2
+    const multipliedNumbers = filteredNumbers.map(num => num * 2);
+    return multipliedNumbers;
+  })
+  .then(result => {
+    // Update the HTML element with ID "output"
+    const output = document.getElementById("output");
+    output.innerText = result.join(", ");
+  })
+  .catch(error => {
+    console.error(error);
+  });
